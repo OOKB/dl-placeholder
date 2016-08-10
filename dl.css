@@ -9,13 +9,12 @@
   font-feature-settings: "kern";
   font-kerning: normal;
   text-rendering: optimizeLegibility;
-  -ms-word-break: break-all;
+  /*-ms-word-break: break-all;
   word-break: break-all;
-  /*Non standard for webkit */
-  word-break: break-word;
-  -webkit-hyphens: auto;
+  word-break: break-word;*/
+  /*-webkit-hyphens: auto;
   -moz-hyphens: auto;
-  hyphens: auto;
+  hyphens: auto;*/
 }
 html {
   -webkit-box-sizing: border-box;
@@ -150,6 +149,8 @@ img {
 .centered {
   top: 50%;
   left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 /* some grid related stuff */
@@ -334,6 +335,44 @@ img {
   .hidden-lg {
     display: none;
     visibility: hidden;
+  }
+}
+
+@media (max-width: 50em) {
+  .showroomsAndReps > div > div.six.right {
+    float: none;
+  }
+}
+
+.showroomsAndReps > div > ul.group:first-of-type {
+  margin-bottom: 4em;
+}
+
+/**special office-y stuff...**/
+@media (min-width: 45em) and (max-width: 70em) {
+  .office.four {
+    width: calc(100% / 12 * 06);
+    float:left;
+  }
+  .office:nth-child(2n+3),
+  .showroom:nth-child(2n+3) {
+    clear: left;
+  }
+}
+
+@media (min-width: 50em) {
+  .office.four {
+    width: calc(100% / 12 * 06);
+  }
+}
+
+@media (min-width: 70em) {
+  .office.four {
+    width: calc(100% / 12 * 04);
+  }
+  .office:nth-child(3n+4),
+  .showroom:nth-child(3n+4) {
+    clear: left;
   }
 }
 /* some preset margins, padding, etc ... */
@@ -535,10 +574,6 @@ header .dl-logo {
 #contact {
   margin-top: 100vh;
 }
-.office:nth-child(3n+4),
-.showroom:nth-child(3n+4) {
-  clear: left;
-}
 .office button,
 .showroom button {
   background: transparent;
@@ -556,6 +591,9 @@ header .dl-logo {
   text-decoration: none;
   transition: all 400ms;
   cursor: pointer;
+  overflow: hidden;
+  display: inline-block;
+  max-width: 100%;
 }
 .office button:hover,
 .showroom button:hover {
